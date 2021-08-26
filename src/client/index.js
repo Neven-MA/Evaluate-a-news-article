@@ -1,3 +1,5 @@
+import "./styles/style.scss";
+
 alert("I EXIST");
 // TODO include your scss file here
 

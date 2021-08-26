@@ -1,8 +1,14 @@
+const path = require("path");
+const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./src/client/index.js",
+  output: {
+    libraryTarget: "var",
+    library: "Client",
+  },
   mode: "development",
   devtool: "source-map",
   stats: "minimal",
@@ -13,17 +19,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
       },
-      // TODO 2: Add Loaders for
-      //    1. converting sass => css
-      //    2. Turns css into commonjs
-      //    3. Inject styles into DOM
-      /* HINT: structure
-        {
-          test: REGEX_TO_MATCH_FILES ex. /\.js$/,
-          exclude: /node_modules/,
-          loader: '',
-        }
-       */
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
   plugins: [
@@ -37,6 +36,5 @@ module.exports = {
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
     }),
-    // TODO: configure workbox-webpack-plugin
   ],
 };

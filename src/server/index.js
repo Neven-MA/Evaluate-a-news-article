@@ -1,4 +1,5 @@
-// TODO: Configure the environment variables
+const dotenv = require("dotenv");
+dotenv.config();
 var path = require("path");
 const express = require("express");
 const app = express();
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 const cors = require("cors");
 app.use(cors());
 
-const port = 8081;
+const port = 8000;
 const server = app.listen(port, () => {
   console.log(`server is running`);
   console.log(`running on localhost: ${port}`);
@@ -21,6 +22,10 @@ app.get("/", function (req, res) {
   res.sendFile(path.resolve("dist/index.html"));
 });
 
+const BASE_API_URL = "https://api.meaningcloud.com/sentiment-2.1";
+const MEAN_CLOUD_API_KEY = process.env.API_KEY;
+
+app.post("/post");
 // a route that handling post request for new URL that coming from the frontend
 /* TODO:
     1. GET the url from the request body
@@ -44,9 +49,9 @@ app.get("/test", function (req, res) {
 });
 
 // designates what port the app will listen to for incoming requests
-app.listen(PORT, (error) => {
+app.listen(port, (error) => {
   if (error) throw new Error(error);
-  console.log(`Server listening on port ${PORT}!`);
+  console.log(`Server listening on port ${port}!`);
 });
 
 // TODO: export app to use it in the unit testing

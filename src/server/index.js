@@ -1,21 +1,26 @@
 // TODO: Configure the environment variables
+var path = require("path");
+const express = require("express");
+const app = express();
+const mockAPIResponse = require("./mockAPI.js");
 
-const mockAPIResponse = require('./mockAPI.js')
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-const PORT = 8081
+const cors = require("cors");
+app.use(cors());
 
-// TODO add Configuration to be able to use env variables
+const port = 8081;
+const server = app.listen(port, () => {
+  console.log(`server is running`);
+  console.log(`running on localhost: ${port}`);
+});
 
+app.get("/", function (req, res) {
+  res.sendFile(path.resolve("dist/index.html"));
+});
 
-// TODO: Create an instance for the server
-// TODO: Configure cors to avoid cors-origin issue
-// TODO: Configure express to use body-parser as middle-ware.
-// TODO: Configure express static directory.
-
-app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
-})
 // a route that handling post request for new URL that coming from the frontend
 /* TODO:
     1. GET the url from the request body
@@ -34,14 +39,14 @@ app.get('/', function (req, res) {
      }
 */
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
-})
+app.get("/test", function (req, res) {
+  res.send(mockAPIResponse);
+});
 
 // designates what port the app will listen to for incoming requests
 app.listen(PORT, (error) => {
-    if (error) throw new Error(error)
-    console.log(`Server listening on port ${PORT}!`)
-})
+  if (error) throw new Error(error);
+  console.log(`Server listening on port ${PORT}!`);
+});
 
 // TODO: export app to use it in the unit testing

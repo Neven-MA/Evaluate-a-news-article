@@ -8,7 +8,7 @@ const checkURL = (url) => {
       "(\\#[-a-z\\d_]*)?$",
     "i"
   ); // fragment locator
-  return !!pattern.test(str);
+  return !!pattern.test(url);
 };
 
 export { checkURL };

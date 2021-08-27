@@ -1,7 +1,9 @@
 import "./styles/style.scss";
+import { checkURL } from "./js/checkURL.js";
+import { handleSubmit } from "./js/formHandler.js";
 
 alert("I EXIST");
-// TODO include your scss file here
+console.log("hi");
 
 // TODO: get the button for submit
 // TODO: add event listener to it when the click to call handleSubmit function
@@ -14,3 +16,4 @@ alert("I EXIST");
  *      no
  *          show user message it's not valid URL
  */
+export { checkURL, handleSubmit };

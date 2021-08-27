@@ -5,6 +5,13 @@ import { handleSubmit } from "./js/formHandler.js";
 alert("I EXIST");
 console.log("hi");
 
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("btn-submit");
+  button.addEventListener("click", () => {
+    handleSubmit();
+  });
+});
+
 // TODO: get the button for submit
 // TODO: add event listener to it when the click to call handleSubmit function
 /**

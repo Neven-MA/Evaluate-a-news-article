@@ -2,7 +2,7 @@ const handleSubmit = () => {
   console.log("hi");
   const url = document.getElementById("article-url").value;
   if (Client.checkURL(url)) {
-    postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
+    postData("http://localhost:8000/url-Analyzer", { url }).then((newData) => {
       console.log(data);
       document.getElementById(
         "agreement"

@@ -2,7 +2,7 @@ const handleSubmit = () => {
   const url = document.getElementById("article-url").value;
   if (Client.checkURL(url)) {
     postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
-      if (data.msg) {
+      if (data.msg==="No content to analyze") {
         document.getElementById("invalid").innerHTML = `${data.msg}`;
         document.getElementById("agreement").innerHTML =''
         document.getElementById("subjectivity").innerHTML = '';
@@ -11,6 +11,7 @@ const handleSubmit = () => {
         document.getElementById("score_tag").innerHTML = '';
       } else {
         console.log(data);
+        document.getElementById("invalid").innerHTML = ``;
         document.getElementById("agreement").innerHTML = `Agreement:${data.agreement}`;
         document.getElementById("subjectivity").innerHTML = `Subjectivity:${data.subjectivity}`;
         document.getElementById("confidence").innerHTML = `Confidence:${data.confidence}`;

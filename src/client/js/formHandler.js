@@ -2,8 +2,13 @@ const handleSubmit = () => {
   const url = document.getElementById("article-url").value;
   if (Client.checkURL(url)) {
     postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
-      if (data === undefined) {
-        document.getElementById("invalid").innerHTML = `no result!`;
+      if (data.msg) {
+        document.getElementById("invalid").innerHTML = `${data.msg}`;
+        document.getElementById("agreement").innerHTML =''
+        document.getElementById("subjectivity").innerHTML = '';
+        document.getElementById("confidence").innerHTML ='';
+        document.getElementById("irony").innerHTML ='';
+        document.getElementById("score_tag").innerHTML = '';
       } else {
         console.log(data);
         document.getElementById("agreement").innerHTML = `Agreement:${data.agreement}`;

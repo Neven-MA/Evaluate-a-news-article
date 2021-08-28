@@ -2,7 +2,7 @@ const handleSubmit = () => {
   const url = document.getElementById("article-url").value;
   if (Client.checkURL(url)) {
     postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
-      if ((data = null)) {
+      if (data === undefined) {
         document.getElementById("invalid").innerHTML = `no result!`;
       } else {
         console.log(data);

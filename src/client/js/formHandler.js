@@ -2,7 +2,7 @@ const handleSubmit = () => {
   const url = document.getElementById("article-url").value;
   if (Client.checkURL(url)) {
     postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
-      if (data.msg==="No content to analyze") {
+      if (data.status.msg==="No content to analyze") {
         document.getElementById("invalid").innerHTML = `${data.msg}`;
         document.getElementById("agreement").innerHTML =''
         document.getElementById("subjectivity").innerHTML = '';

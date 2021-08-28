@@ -1,41 +1,33 @@
 const handleSubmit = () => {
   const url = document.getElementById("article-url").value;
-  const invalid = document.getElementById("invalid").innerHTML;
-  const agreement = document.getElementById("agreement").innerHTML;
-  const subjectivity = document.getElementById("subjectivity").innerHTML;
-  const confidence = document.getElementById("confidence").innerHTML;
-  const irony = document.getElementById("irony").innerHTML;
-  const scoreTag = document.getElementById("score_tag").innerHTML;
-
   if (Client.checkURL(url)) {
     postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
       if (data.status.msg==="No content to analyze") {
-        invalid = `${data.status.msg}`;
-        agreement =''
-        subjectivity = '';
-        confidence.innerHTML ='';
-        irony ='';
-        scoreTag = '';
+        document.getElementById("invalid").innerHTML = `${data.status.msg}`;
+        document.getElementById("agreement").innerHTML =''
+        document.getElementById("subjectivity").innerHTML = '';
+        document.getElementById("confidence").innerHTML ='';
+        document.getElementById("irony").innerHTML ='';
+        document.getElementById("score_tag").innerHTML = '';
       } else {
         console.log(data);
-        invalid = ``;
-        agreement = `Agreement:${data.agreement}`;
-        subjectivity = `Subjectivity:${data.subjectivity}`;
-        confidence = `Confidence:${data.confidence}`;
-        irony = `Irony:${data.irony}`;
-        scoreTag = `Score_tag:${data.score_tag}`;
+        document.getElementById("invalid").innerHTML = ``;
+        document.getElementById("agreement").innerHTML = `Agreement:${data.agreement}`;
+        document.getElementById("subjectivity").innerHTML = `Subjectivity:${data.subjectivity}`;
+        document.getElementById("confidence").innerHTML = `Confidence:${data.confidence}`;
+        document.getElementById("irony").innerHTML = `Irony:${data.irony}`;
+        document.getElementById("score_tag").innerHTML = `Score_tag:${data.score_tag}`;
       }
     });
   } else {
-    invalid = `Please,enter a valid URL`;
-    agreement =''
-    subjectivity = '';
-    confidence ='';
-    irony ='';
-    scoreTag = '';
+    document.getElementById("invalid").innerHTML = `Please,enter a valid URL`;
+    document.getElementById("agreement").innerHTML =''
+    document.getElementById("subjectivity").innerHTML = '';
+    document.getElementById("confidence").innerHTML ='';
+    document.getElementById("irony").innerHTML ='';
+    document.getElementById("score_tag").innerHTML = '';
   }
 };
-
 const postData = async (url = "", data = {}) => {
   console.log("Analyzing:", data);
   const response = await fetch(url, {
@@ -54,5 +46,4 @@ const postData = async (url = "", data = {}) => {
     console.log("error", error);
   }
 };
-
 export { handleSubmit };

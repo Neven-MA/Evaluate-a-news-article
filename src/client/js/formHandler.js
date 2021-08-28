@@ -6,23 +6,20 @@ const handleSubmit = () => {
         document.getElementById("invalid").innerHTML = `no result!`;
       } else {
         console.log(data);
-        document.getElementById(
-          "agreement"
-        ).innerHTML = `Agreement:${data.agreement}`;
-        document.getElementById(
-          "subjectivity"
-        ).innerHTML = `Subjectivity:${data.subjectivity}`;
-        document.getElementById(
-          "confidence"
-        ).innerHTML = `Confidence:${data.confidence}`;
+        document.getElementById("agreement").innerHTML = `Agreement:${data.agreement}`;
+        document.getElementById("subjectivity").innerHTML = `Subjectivity:${data.subjectivity}`;
+        document.getElementById("confidence").innerHTML = `Confidence:${data.confidence}`;
         document.getElementById("irony").innerHTML = `Irony:${data.irony}`;
-        document.getElementById(
-          "score_tag"
-        ).innerHTML = `Score_tag:${data.score_tag}`;
+        document.getElementById("score_tag").innerHTML = `Score_tag:${data.score_tag}`;
       }
     });
   } else {
     document.getElementById("invalid").innerHTML = `Please,enter a valid URL`;
+    document.getElementById("agreement").innerHTML =''
+    document.getElementById("subjectivity").innerHTML = '';
+    document.getElementById("confidence").innerHTML ='';
+    document.getElementById("irony").innerHTML ='';
+    document.getElementById("score_tag").innerHTML = '';
   }
 };
 

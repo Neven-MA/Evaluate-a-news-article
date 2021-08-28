@@ -3,7 +3,7 @@ const handleSubmit = () => {
   if (Client.checkURL(url)) {
     postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
       if (data.status.msg==="No content to analyze") {
-        document.getElementById("invalid").innerHTML = `${data.msg}`;
+        document.getElementById("invalid").innerHTML = `${data.status.msg}`;
         document.getElementById("agreement").innerHTML =''
         document.getElementById("subjectivity").innerHTML = '';
         document.getElementById("confidence").innerHTML ='';

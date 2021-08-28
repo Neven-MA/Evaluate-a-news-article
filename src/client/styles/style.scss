@@ -10,6 +10,20 @@ html {
   background-size: cover;
 }
 
+.result {
+  width: 100%;
+  height: fit-content;
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+  color: $font-color;
+  background-color: rgba(228,242,243,.5);
+  border: 3px solid #92b1bf;
+  box-shadow: $border-shadow;
+  border-radius: 15px;
+  margin: 5px;
+  padding:5px;
+}
+
 .container {
   display: grid;
   grid-auto-rows: minmax(200px, auto);
@@ -57,7 +71,7 @@ form {
 
     &:hover {
       cursor: pointer;
-      background-color: #e4f2f3;
+      background-color: rgba(228,242,243,.5);
     }
   }
 }

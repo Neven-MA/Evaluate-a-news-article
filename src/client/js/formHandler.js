@@ -1,31 +1,38 @@
 const handleSubmit = () => {
   const url = document.getElementById("article-url").value;
+  const invalid = document.getElementById("invalid");
+  const agreement = document.getElementById("agreement");
+  const subjectivity = document.getElementById("subjectivity");
+  const confidence = document.getElementById("confidence");
+  const irony = document.getElementById("irony");
+  const scoreTag = document.getElementById("score_tag");
+
   if (Client.checkURL(url)) {
     postData("http://localhost:8000/url-Analyzer", { url }).then((data) => {
-      if (data.status.msg==="No content to analyze") {
-        document.getElementById("invalid").innerHTML = `${data.status.msg}`;
-        document.getElementById("agreement").innerHTML =''
-        document.getElementById("subjectivity").innerHTML = '';
-        document.getElementById("confidence").innerHTML ='';
-        document.getElementById("irony").innerHTML ='';
-        document.getElementById("score_tag").innerHTML = '';
+      if (data.status.msg === "No content to analyze") {
+        invalid.innerHTML = `${data.status.msg}`;
+        agreement.innerHTML = "";
+        subjectivity.innerHTML = "";
+        confidence.innerHTML = "";
+        irony.innerHTML = "";
+        scoreTag.innerHTML = "";
       } else {
         console.log(data);
-        document.getElementById("invalid").innerHTML = ``;
-        document.getElementById("agreement").innerHTML = `Agreement:${data.agreement}`;
-        document.getElementById("subjectivity").innerHTML = `Subjectivity:${data.subjectivity}`;
-        document.getElementById("confidence").innerHTML = `Confidence:${data.confidence}`;
-        document.getElementById("irony").innerHTML = `Irony:${data.irony}`;
-        document.getElementById("score_tag").innerHTML = `Score_tag:${data.score_tag}`;
+        invalid.innerHTML = ``;
+        agreement.innerHTML = `Agreement:${data.agreement}`;
+        subjectivity.innerHTML = `Subjectivity:${data.subjectivity}`;
+        confidence.innerHTML = `Confidence:${data.confidence}`;
+        irony.innerHTML = `Irony:${data.irony}`;
+        scoreTag.innerHTML = `Score_tag:${data.score_tag}`;
       }
     });
   } else {
-    document.getElementById("invalid").innerHTML = `Please,enter a valid URL`;
-    document.getElementById("agreement").innerHTML =''
-    document.getElementById("subjectivity").innerHTML = '';
-    document.getElementById("confidence").innerHTML ='';
-    document.getElementById("irony").innerHTML ='';
-    document.getElementById("score_tag").innerHTML = '';
+    invalid.innerHTML = `Please,enter a valid URL`;
+    agreement.innerHTML = "";
+    subjectivity.innerHTML = "";
+    confidence.innerHTML = "";
+    irony.innerHTML = "";
+    scoreTag.innerHTML = "";
   }
 };
 const postData = async (url = "", data = {}) => {

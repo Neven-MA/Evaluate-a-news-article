@@ -51,4 +51,4 @@ app.listen(8010, (error) => {
   console.log(`Server listening on port ${port}!`);
 });
 
-// TODO: export app to use it in the unit testing
+module.exports = { app };

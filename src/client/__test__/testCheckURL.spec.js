@@ -1,4 +1,4 @@
-import { checkURL } from "../src/client/js/checkURL.js";
+import { checkURL } from "../js/checkURL.js";
 import "babel-polyfill";
 
 describe("Testing checkURL() function", () => {

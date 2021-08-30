@@ -30,10 +30,10 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/client/views/index.html",
       filename: "./index.html",
-      favicon: "./src/favicon.ico"
+      favicon: "./src/favicon.ico",
     }),
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
-    new WorkboxPlugin.GenerateSW(),
+    new WorkboxPlugin.GenerateSW({ inlineWorkboxRuntime: true }),
   ],
   optimization: {
     minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],

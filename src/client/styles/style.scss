@@ -1,6 +1,7 @@
 $font-color: #517c96;
 $border-color: #92b1bf;
 $border-shadow: 2px 4px 5px #c5dde8;
+$font-size: 20px;
 
 html {
   background: url("../img/img1.jpg") no-repeat center center fixed;
@@ -13,15 +14,15 @@ html {
 .result {
   width: 100%;
   height: fit-content;
-  font-size: 20px;
+  font-size: $font-size;
   font-family: "Oswald", sans-serif;
   color: $font-color;
-  background-color: rgba(228,242,243,.5);
+  background-color: rgba(228, 242, 243, 0.5);
   border: 3px solid #92b1bf;
   box-shadow: $border-shadow;
   border-radius: 15px;
   margin: 5px;
-  padding:5px;
+  padding: 5px;
 }
 
 .container {
@@ -30,10 +31,14 @@ html {
   min-height: fit-content;
   justify-content: center;
   grid-gap: 1em;
-  font-size: 20px;
+  font-size: $font-size;
   font-family: "Oswald", sans-serif;
   text-align: center;
   color: $font-color;
+
+  p {
+    place-self: center;
+  }
 }
 
 form {
@@ -41,7 +46,7 @@ form {
     display: block;
     height: 60px;
     width: 100%;
-    font-size: 20px;
+    font-size: $font-size;
     font-family: "Oswald", sans-serif;
     color: $font-color;
     border: 1px solid #92b1bf;
@@ -60,7 +65,7 @@ form {
   button {
     width: 100%;
     height: 60px;
-    font-size: 20px;
+    font-size: $font-size;
     font-family: "Oswald", sans-serif;
     color: $font-color;
     background-color: transparent;
@@ -71,7 +76,7 @@ form {
 
     &:hover {
       cursor: pointer;
-      background-color: rgba(228,242,243,.5);
+      background-color: rgba(228, 242, 243, 0.5);
     }
   }
 }

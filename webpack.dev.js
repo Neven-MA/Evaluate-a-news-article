@@ -30,7 +30,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/client/views/index.html",
       filename: "./index.html",
-      favicon: "./src/favicon.ico"
+      favicon: "./src/favicon.ico",
     }),
     new CleanWebpackPlugin({
       dry: true,
@@ -38,6 +38,6 @@ module.exports = {
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
     }),
-    new WorkboxPlugin.GenerateSW(),
+    new WorkboxPlugin.GenerateSW({ inlineWorkboxRuntime: true }),
   ],
 };
